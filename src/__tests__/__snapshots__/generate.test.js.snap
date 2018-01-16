@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`restuff renderExternalDef should render external definition with all placeholders set correctly 1`] = `"[@bs.module] external button : {.\\"root\\": string} = \\"./components/button.module.scss\\""`;
+exports[`renderExternalDef should render external definition with all placeholders set correctly 1`] = `"[@bs.module] external button : {.\\"root\\": string} = \\"./components/button.module.scss\\""`;
 
-exports[`restuff renderExternalDef should render external definition with placeholder if arg not provided 1`] = `"[@bs.module] external %identifier : %type = \\"%filepath\\""`;
+exports[`renderExternalDef should render external definition with placeholder if arg not provided 1`] = `"[@bs.module] external %identifier : %type = \\"%filepath\\""`;
 
-exports[`restuff renderStyleFileStr should render empty closed object type on empty input 1`] = `"{.}"`;
+exports[`renderStyleFileStr should render empty closed object type on empty input 1`] = `"{.}"`;
 
-exports[`restuff renderStyleFileStr should render empty files on empty input 1`] = `
+exports[`renderStyleFileStr should render empty files on empty input 1`] = `
 "/**
 * GENERATED VIA bs-css-modules-loader
 * ---
@@ -16,7 +16,7 @@ exports[`restuff renderStyleFileStr should render empty files on empty input 1`]
 "
 `;
 
-exports[`restuff renderStyleFileStr should render file with multiple file entries 1`] = `
+exports[`renderStyleFileStr should render file with multiple file entries 1`] = `
 "/**
 * GENERATED VIA bs-css-modules-loader
 * ---
@@ -30,24 +30,24 @@ htest
 ztest"
 `;
 
-exports[`restuff renderStyleFileStr should render object with multiple fields 1`] = `
+exports[`renderStyleFileStr should render object with multiple fields 1`] = `
 "{.
 \\"a\\": string,
 \\"b\\": string
 }"
 `;
 
-exports[`restuff renderStyleFileStr should render object with one field 1`] = `
+exports[`renderStyleFileStr should render object with one field 1`] = `
 "{.
 \\"a\\": string
 }"
 `;
 
-exports[`restuff renderTypeFields should not render comma in last line 1`] = `"\\"a\\": string"`;
+exports[`renderTypeFields should not render comma in last line 1`] = `"\\"a\\": string"`;
 
-exports[`restuff renderTypeFields should render multiple fields 1`] = `
+exports[`renderTypeFields should render multiple fields 1`] = `
 "\\"a\\": string,
 \\"b\\": string"
 `;
 
-exports[`restuff renderTypeFields should return empty string on empty input 1`] = `""`;
+exports[`renderTypeFields should return empty string on empty input 1`] = `""`;

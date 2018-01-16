@@ -8,6 +8,7 @@
     [@bs.module] external $identifier: $type = "$filepath";
 */
 
+const path = require("path");
 const packageName = require("../package").name;
 const HEADER = `/**
 * GENERATED VIA ${packageName}
@@ -65,9 +66,54 @@ const renderStyleFileStr = files => {
   return `${HEADER}${content !== "" ? `\n${content}` : ""}`;
 };
 
+// This will calculate the filepath for the external definition
+// The import path of given JS file is dependent on the actual position
+// of the reOutputFile
+
+// reOutputPath: string - Target .re file containing the external definition
+// cssPath: string - The SCSS file being processed in the process
+const calcRequireFilepath = (reOutputPath, cssPath) => {
+  const re = path.parse(reOutputPath);
+  const css = path.parse(cssPath);
+  const rel = path.relative(re.dir, css.dir);
+
+  if (!rel.startsWith(".")) {
+    return `./${rel}/${css.base}`;
+  }
+
+  return `${rel}/${css.base}`;
+};
+
+const ocamlifyOps = [
+  str => str.replace(/[\-\.]/g, "_"),
+  str => str.charAt(0).toLowerCase() + str.slice(1)
+];
+
+// Disambiguates character problems for OCaml
+// and hey, this reduce is actually fn composition, now you learned stuff!
+const ocamlify = str => ocamlifyOps.reduce((acc, next) => next(acc), str);
+
+// This should create an identifier which follows the
+// OCaml requirements and which also sounds like the
+// original css file
+
+// cssFileName: string - Filename (without path)
+// extFormat: string - The extension format chosen by the user (e.g. '.module.scss')
+const calcIdentifierName = (cssFileName, extFormat) => {
+  const withoutExt =
+    extFormat == null
+      ? path.parse(cssFileName).name
+      : cssFileName.split(`${extFormat}`)[0];
+
+  return ocamlify(withoutExt);
+};
+
 module.exports = {
   renderTypeFields,
   renderObjTypeStr,
   renderStyleFileStr,
-  renderExternalDef
+  renderExternalDef,
+  calcRequireFilepath,
+  calcIdentifierName,
+  ocamlify
 };
