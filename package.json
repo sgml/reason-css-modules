@@ -1,0 +1,17 @@
+{
+  "name": "bs-css-modules-loader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "flow-bin": "^0.63.1",
+    "loader-runner": "^2.3.0",
+    "loader-utils": "^1.1.0",
+    "prettier": "^1.10.2"
+  },
+  "dependencies": {
+    "postcss-scss": "^1.0.3",
+    "query-ast": "^1.0.1",
+    "scss-parser": "^1.0.0"
+  }
+}

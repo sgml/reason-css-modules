@@ -1,0 +1,11 @@
+.root {
+    background-color: blue;
+}
+
+#test {
+    background-color: yellow;
+}
+
+:global {
+    background-color: white;
+}
