@@ -14,7 +14,9 @@ runLoaders(
       {
         loader: path.resolve(__dirname, "./src/loader"),
         options: {
-          name: "fixture/demo.[ext]"
+          extFormat: ".module.scss",
+          reOutputPath: "src/Style.re",
+          name: "fixture/[name].[ext]"
         }
       }
     ],
