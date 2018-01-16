@@ -20,5 +20,5 @@ runLoaders(
     ],
     readResource: fs.readFile.bind(fs)
   },
-  (err, result) => ""//(err ? console.error(err) : console.log(result))
+  (err, result) => (err ? console.error(err) : console.log("Finished"))
 );
