@@ -3,41 +3,57 @@ const path = require("path");
 
 const generate = require("./generate");
 const css = require('./css');
+const fs = require('fs');
 
 // This is the complete cache storing all known files as a string
 const typeDefsCache = {};
 
 // content: string - content of the loaded file
 module.exports = function(content) {
+  const cb = this.async();
   const options = loaderUtils.getOptions(this);
-  console.log(options);
 
-  const name = options.name;
-  const reOutputPath = path.resolve(options.reOutputPath);
+  // TODO: extract extFormat from the test-query?
+  //       probably not possible
+  const extFormat = options.extFormat;
+
+  // Relative Path
+  const reOutputPath = options.reOutputPath;
+
+  // Both paths need to be absolute
+  const rePath = path.resolve(reOutputPath);
   const cssPath = this.resourcePath;
 
   const cssFileName = path.parse(cssPath).base;
 
   const classes = css.extractClassNames(content);
 
-  typeDefsCache[cssFileName] = generate.renderExternalDef({
-    identifier: generate.calcIdentifierName(cssFileName),
-    filepath: generate.calcRequireFilepath(reOutputPath, cssPath),
+  const defData = {
+    identifier: generate.calcIdentifierName(cssFileName, extFormat),
+    filepath: generate.calcRequireFilepath(rePath, cssPath),
     type: generate.renderObjTypeStr(classes),
-  });
+  };
+  console.log(defData);
 
-  console.log(typeDefsCache);
+
+  typeDefsCache[cssFileName] = generate.renderExternalDef(defData);
 
   const styleFileContent = generate.renderStyleFileStr(typeDefsCache);
 
-  console.log(`reOutputPath: ${reOutputPath}`);
-
   //// I don't think this is necessary, since we are writing actual .re files
-  // const name = options.name
-  // const url = loaderUtils.interpolateName(this, name, { content });
-  this.emitFile(reOutputPath, styleFileContent);
+  const name = options.name
+  const url = loaderUtils.interpolateName(this, reOutputPath, { content });
 
-  const webpackFilePath = `__webpack_public_path__ + ${JSON.stringify(reOutputPath)};`;
+  // this.emitFile(url, styleFileContent);
 
-  return `export default ${webpackFilePath}`;
+  console.log(cssPath);
+
+  fs.writeFile(rePath, styleFileContent, 'utf8', (err) => {
+    if(err) {
+      cb(err);
+      return;
+    }
+    const webpackFilePath = `__webpack_public_path__ + ${JSON.stringify(reOutputPath)};`;
+    cb(null, `export default ${webpackFilePath}`);
+  });
 };

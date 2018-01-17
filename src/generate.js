@@ -30,7 +30,7 @@ const renderExternalDef = ({
   identifier = "%identifier",
   filepath = "%filepath",
   type = "%type"
-}) => `[@bs.module] external ${identifier} : ${type} = "${filepath}"`;
+}) => `[@bs.module] external ${identifier} : ${type} = "${filepath}";`;
 
 const renderTypeField = f => `"${f}": string`;
 
@@ -76,6 +76,10 @@ const calcRequireFilepath = (reOutputPath, cssPath) => {
   const re = path.parse(reOutputPath);
   const css = path.parse(cssPath);
   const rel = path.relative(re.dir, css.dir);
+
+  if (rel === '') {
+    return `./${css.base}`;
+  }
 
   if (!rel.startsWith(".")) {
     return `./${rel}/${css.base}`;

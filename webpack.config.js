@@ -3,8 +3,11 @@ const webpack = require("webpack");
 const path = require("path");
 
 module.exports = {
-  context: __dirname,
+  context: path.resolve(__dirname),
   entry: "./test/app.js",
+  resolve: {
+    extensions: [".module.scss"]
+  },
   module: {
     rules: [
       {
@@ -14,8 +17,8 @@ module.exports = {
             loader: path.resolve(__dirname, "./src/loader"),
             options: {
               extFormat: ".module.scss",
-              reOutputPath: "build/Style.re",
-              name: "fixture/[name].[ext]"
+              reOutputPath: "test/Style.re",
+              name: "fixture/Style.re"
             }
           }
         ]

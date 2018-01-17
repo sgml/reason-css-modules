@@ -87,6 +87,14 @@ describe("calcRequireFilePath", () => {
 
     expect(ret).toEqual("../src/components/button.module.scss");
   });
+
+  it('should find relative path in same directory', () => {
+    const reOutputPath = "./src/Styles.re";
+    const cssPath = "./src/style.module.scss";
+    const ret = calcRequireFilepath(reOutputPath, cssPath);
+
+    expect(ret).toEqual("./style.module.scss");
+  });
 });
 
 describe("calcIdentifierName", () => {
