@@ -1,8 +1,8 @@
 const loaderUtils = require("loader-utils");
 const path = require("path");
 
-const ReasonCssModules = require("./lib/js/src/index.bs.js");
-const css = require("./src/css");
+const ReasonCssModules = require("../lib/js/src/index.bs.js");
+const css = require("./css");
 const fs = require("fs");
 
 // This is the complete cache storing all known files as a string

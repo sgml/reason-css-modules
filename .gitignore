@@ -1,6 +1,7 @@
 node_modules/
 build/
-test/Style.re
+example/style.re
+example/build/
 lib/*
 !lib/js
 .bsb.lock

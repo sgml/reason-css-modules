@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "webpack": "webpack",
+    "example:webpack": "webpack --config example/webpack.config.js",
     "bs:clean": "bsb -clean-world",
     "bs:build": "bsb -make-world",
     "bs:watch": "bsb -make-world -w",

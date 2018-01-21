@@ -1,10 +1,12 @@
+// This file is useful for quickly run the loader
+
 const fs = require("fs");
 const path = require("path");
 const { runLoaders } = require("loader-runner");
 
 runLoaders(
   {
-    resource: "./fixture/foo.module.scss",
+    resource: "./example/style.module.scss",
     context: {
       emitFile: () => {},
       emitError: () => {},
@@ -12,10 +14,10 @@ runLoaders(
     },
     loaders: [
       {
-        loader: path.resolve(__dirname, "./loader"),
+        loader: path.resolve(__dirname, "./src/loader"),
         options: {
           extFormat: ".module.scss",
-          reOutputPath: "src/style.re"
+          reOutputPath: "example/style.re"
         }
       }
     ],
