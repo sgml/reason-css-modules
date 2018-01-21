@@ -5,12 +5,12 @@ describe("extractClassNames", () => {
     const content = `
       .root { color: red; }
       .test { color: blue; }
-      :global { color: white; }
+      :global(.abc) { color: white; }
     `;
     expect(css.extractClassNames(content)).toEqual(["root", "test"]);
   });
 
-  it('should ignore id selector', () => {
+  it("should ignore id selector", () => {
     const content = `
       .root { color: red; }
       #foo { color: white; }

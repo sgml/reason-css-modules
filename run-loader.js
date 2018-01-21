@@ -12,11 +12,10 @@ runLoaders(
     },
     loaders: [
       {
-        loader: path.resolve(__dirname, "./src/loader"),
+        loader: path.resolve(__dirname, "./loader"),
         options: {
           extFormat: ".module.scss",
-          reOutputPath: "src/Style.re",
-          name: "fixture/[name].[ext]"
+          reOutputPath: "src/style.re"
         }
       }
     ],

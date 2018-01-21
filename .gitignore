@@ -1,3 +1,7 @@
 node_modules/
 build/
 test/Style.re
+lib/*
+!lib/js
+.bsb.lock
+.merlin

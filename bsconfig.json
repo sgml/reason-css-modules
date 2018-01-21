@@ -1,0 +1,23 @@
+{
+  "name": "reason-css-modules",
+  "version": "0.1.0",
+  "sources": [
+    {
+      "dir": "src"
+    },
+    {
+      "dir": "src/__tests__",
+      "type": "dev"
+    }
+  ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": false
+  },
+  "refmt": 3,
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    // add your bs-dependencies here
+  ],
+  "bs-dev-dependencies": ["@glennsl/bs-jest"]
+}

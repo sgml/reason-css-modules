@@ -14,10 +14,13 @@ module.exports = {
         test: /\.(module\.scss)$/,
         use: [
           {
+            loader: path.resolve(__dirname, "./css-loader")
+          },
+          {
             loader: path.resolve(__dirname, "./src/loader"),
             options: {
               extFormat: ".module.scss",
-              reOutputPath: "test/Style.re",
+              reOutputPath: "src/style.re",
               name: "fixture/Style.re"
             }
           }
