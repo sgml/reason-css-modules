@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`externalDef should render external definition with all placeholders set correctly 1`] = `"let button : {.\\"root\\": string} = [%raw {|require(\\"./components/button.module.scss\\")|}];"`;
+
+exports[`externalDef should render external definition with placeholder if arg not provided 1`] = `"let %identifier : %type = [%raw {|require(\\"%filepath\\")|}];"`;
+
+exports[`objType should render object with multiple fields 1`] = `
+"{.
+\\"a\\": string,
+\\"b\\": string
+}"
+`;
+
+exports[`objType should render object with one field 1`] = `
+"{.
+\\"a\\": string
+}"
+`;
+
+exports[`objTypeFields should not render comma in last line 1`] = `"\\"a\\": string"`;
+
+exports[`objTypeFields should render multiple fields 1`] = `
+"\\"a\\": string,
+\\"b\\": string"
+`;
+
+exports[`renderStyleFileStr should render file with multiple file entries 1`] = `
+"/**
+* GENERATED VIA reason-css-modules-generator (1.0.0)
+* ---
+* Do not modify this file manually.
+* Edit the relevant scss file instead!
+**/
+
+atest
+dtest
+htest
+ztest"
+`;
+
+exports[`renderStyleFileStr should render files on empty input 1`] = `
+"/**
+* GENERATED VIA reason-css-modules-generator (1.0.0)
+* ---
+* Do not modify this file manually.
+* Edit the relevant scss file instead!
+**/
+"
+`;

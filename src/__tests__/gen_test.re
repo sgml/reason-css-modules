@@ -104,7 +104,6 @@ let _ = {
         ~extFormat=".module.scss",
         ()
       )
-      |> tap(Js.log)
       |> expect
       |> toEqual("button")
     );
