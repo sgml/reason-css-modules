@@ -24,4 +24,4 @@ node run-loader.js
 yarn run example:webpack
 ```
 
-After running webpack, a newly generated file `example/style.re` is generated.
+After running webpack, a newly generated file is stored in `example/style.re`.
