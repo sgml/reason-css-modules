@@ -1,4 +1,4 @@
 const Button = require("./components/button");
-const style = require("./style.module.scss");
+const style = require("./app.module.scss");
 
 export default {};
